@@ -1,0 +1,9 @@
+#use HTTP::Server::Simple::CGI;
+
+#our $cgi;
+
+#print "HTTP/1.0 200 OK\r\n";
+#print $cgi->header,
+#$cgi->start_html("Get2");
+print "Hello";
+#$cgi->end_html();

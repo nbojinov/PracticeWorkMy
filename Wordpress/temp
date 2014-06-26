@@ -1,0 +1,52 @@
+<script type="text/javascript">
+var k=1;
+jQuery(document).ready(function() {  
+     jQuery.getJSON("offices.json", function(data) {
+          jQuery.each(data.result.offices, function() {
+                 if (this.map!=null){
+                     jQuery(".post-4").append("<center><button onclick='myFunction("+this.map.lat+","+this.map.lng+",\""+escape(this.address)+"\")'>"+this.address+"</center><br/>");
+                    console.log("<center><button onclick='myFunction("+this.map.lat+","+this.map.lng+",\""+escape(this.address)+"\")'>"+this.address+"</center><br/>");
+                 }
+           });
+     });
+}); 
+
+function myFunction(){
+
+var a = new google.maps.LatLng(parseFloat(document.getElementById("first").value), parseFloat(document.getElementById("second").value));
+
+var mapOptions = {
+  center: a,
+  zoom: 16
+};
+
+var map = new google.maps.Map(document.getElementById("wpgmza_map"),
+    mapOptions);
+
+var marking = new google.maps.Marker({ position:a, map:map});
+}
+
+function myFunction(lat,lng,name){
+
+var a = new google.maps.LatLng(lat,lng);
+
+var mapOptions = {
+  center: a,
+  zoom: 16
+};
+
+var map = new google.maps.Map(document.getElementById("wpgmza_map"),
+    mapOptions);
+
+var marking = new google.maps.Marker({ position:a, map:map, title:unescape(name)});
+
+jQuery('body').scrollTop(0);
+}
+
+</script>
+<input type="textfield" id="first"></input><br/>
+<input type="textfield" id="second"></input>
+<button type="submit" name="submit" value="submit" onclick="myFunction()">Submit</button>
+
+
+
